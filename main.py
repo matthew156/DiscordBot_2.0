@@ -10,6 +10,11 @@ def get_quote():
     quote = json_data[0]['q'] + "-" + json_data[0]['a']
     return(quote)
 
+def get_joke():
+    response = requests.get("https://dad-jokes.p.rapidapi.com/random/joke")
+    json_data = json.loads(response.text)
+    joke = json_data['body'][2] + "\n" + json_data['body'][3]
+
 def update_inspiration(message):
     if "encouragements" in db.key():
         encouragements = db["encouragements"]
